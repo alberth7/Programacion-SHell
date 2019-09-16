@@ -1,0 +1,44 @@
+- nacio en 2010
+- se uso en 2017 mas
+- ahora esta incrementando 
+
+// puede que kothin supla a java
+
+Si tu quieres ser un desarrollador android si o si deberias saber kotlin
+
+Consiso => la cantidad de codigo es muy corta
+
+Seguro => nullPointerException
+
+i
+Interoperable => podemos usarlo con JAVA
+
+
+basado en la maquina virtual de java, kotlinc --> Bytecode, Javac --> Bytecode ==> java Virtual Machine
+
+
+Kotlin / Native es para compilar código Kotlin en binarios nativos, que puede ejecutarse sin una máquina virtual.
+
+Kotlin{
+kotlin server Side ktor
+Web KolinJS
+Mobile Android
+}
+
+
+install android{
+
+sudo dpkg –add-architecture i386
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386
+
+}   
+links
+                                                    
+https://www.jetbrains.com/idea/download/
+https://try.kotlinlang.org/#/Examples/Hello,%20world!/Simplest%20version/Simplest%20version.kt
+
+
+
+
+

@@ -1,0 +1,373 @@
+kernel = nucleo del SO, gestioa todo slos recursos del hardware
+shell = interprete de lenguaje de alto nivel
+aplicaciones = 
+
+GNU/Linux se caracteriza por tener muchas alternativas para hacer ciertas tareas. En el caso de edición de texto hay muchas opciones tanto gráficas como a nivel de consola, las más famosas: VI y Nano.
+VI / VIM
+
+Es un editor de texto desarrollado por Bill Joy (co-fundador de Sun Microsystem) en 1976; VI está en casi todos los sistemas operativos *NIX y funciona a través de la consola. Por su gran aceptación tiene un fork (un software derivado) llamado VIM (Vi IMProved) que mejora sustancialmente sus características, por ejemplo, en VIM se agrega soporte de coloreado de sintaxis, plugins, soporte a múltiples lenguajes, multi ventana, editor gráfico (gVim o kVim).
+Ambos editores (se distribuyen por separado) están disponibles en la mayoría de los repositorios de GNU/Linux, VI viene pre-instalado e instalar VIM es super fácil desde los repositorios.
+Modos de VI/VIM.
+
+Tanto VI como VIM tienen dos modos que funcionan para interactuar con el editor sin el uso del ratón. El primer modo, el “modo de comandos”, permite al usuario insertar un comando, ya sea para guardar el archivo, abrir otro archivo o cerrar el programa, y el segundo es el “modo de insertar” y permite al usuario ingresar contenido al archivo que está editando actualmente.
+
+VIM tiene cuatro modos de trabajo adicionales en comparación a VI:
+
+    Modo de línea de órdenes
+    Modo visual
+    Modo selección
+    Modo ex
+
+Nano
+
+Es un editor de texto más sencillo de usar en comparación a VI/VIM pero con menos características, no viene incorporado a ningún sistema operativo *NIX, pero su instalación es muy sencilla.
+
+Nano es un clon de Pico (editor de texto para UNIX, con licencia propietaria), en su web oficial puede verse cómo es su interfaz.
+
+ *** tipos de shell *****
+
+- sh
+- bash
+- ksh
+- csh
+
+
+export PATH="$PATH:/sbin
+
+https://www.taringa.net/+linux/tipos-de-shells_wpzwm
+
+
+
+
+
+ls --help
+man ls
+
+Que es el basj scriptting ?
+
+Ejecutar multiples comandos de forma secuencial
+
+— -> 0
+–x -> 1
+-w- -> 2
+-wx -> 3
+r-- -> 4
+r-x -> 5
+rw- -> 6
+rwx -> 7
+
+r: permiso de lectura
+w: permiso de escritura
+x: permiso de ejecucion
+
+propietario grupo todos
+owner group anyone
+rwx rwx rwx
+
+Los tipos de permisos más comunes, o su combinación, son los siguiente:
+
+666 ( RW / RW / RW)
+Esta opción permite que todos los usuarios puedan leer y escribir en un archivo.
+
+777 ( RWX / RWX /RWX)
+Esta opción permite que todos los usuarios puedan leer, escribir y ejecutar en el archivo o carpeta
+
+755 (RWX / RW / RW)
+Con este permiso el propietario del archivo puede leer, escribir y ejecutar en el archivo mientras que los demás leer y escribir en el archivo mas no ejecutar.
+
+644 (RW / R / R)
+
+Con este permiso el propietario puede leer y escribir en el archivo mientras los demás solo pueden leer.
+
+700 (RWX /—)
+Con este permiso el propietario tiene el control total del archivo mientras que los demás usuarios no tendrán acceso de ningún tipo al archivo.
+
+#add ejecucion a todos
+
+chmod +x nombreDelArchivo
+
+# formas de ejecucion
+./ 
+bash
+
+# para no poner otros nombres de un script que no este definido en el SO
+
+type nombreDelScript
+
+type -t nombreDelScrip
+
+-a todos los archivos encontrados
+
+
+  *** Declaracion de variables y alcance *****
+
+
+variables de entorno = 
+varialbles definidas en un script = 
+
+
+## si alguien quire cambiar, tiene que tomar decisiones dastricas
+
+- No es bueno tener un auto puedes hacer mas cosas 
+
+16:00 
+san miguel calle erqiue pe 941
+havar media cuadra del colegio loreto
+pasillo 
+
+boton 
+cebolot coca 
+
+
+
+*** OPERADORES ****
+
+
+
+
+Debug en Script
+
+Para realizar debugging en un script tenemos dos opciones en el comando de bash:
+
+    -v: Utilizado para ver el resultado detallado de nuestro script, evaluado línea por línea.
+    -x: Utilizado para desplegar la información de los comandos que son usados, capturando el comando y su salida.
+
+
+Como carptura la informacion del usuario ?
+
+  
+
+
+ **** Expresiones Regulres ****
+ http://w3.unpocodetodo.info/utiles/regex.php
+
+ Se necesita conocer ciertos criterios utilizados en las expresiones regulares que son los siguientes:
+
+    ^.- Caracter que representa el inicio de la expresión regular.
+    $.- Caracter que representa el final de la expresión regular.
+    *.- Caracter que representa cero o más ocurrencias de la expresión
+    +.- Caracter que representa una o más ocurrencias de la expresión.
+    {n}.-Representa n veces de una expresión.
+    [ ] .- Representa un conjunto de caracteres, por ejemplo: [a-z] representa las letras del abecedario de la a a la z.
+
+
+
+# ! /bash/bin
+# Programa para  ejemplificar como capturar la informacion del usuario y validar utilizando expresiones regulares
+# Autor Alberth Apaza
+
+identificacionRegex='^[0-9]{10}$' #acepta solo numeros y que sean 10 caracteres                                                                                                                                              
+paisRegex='^EC|COL|US$' #acepta palabras que inician con esas dos letras                                                                                                                                                     
+fechaNacimientoRegex='^19|20[0-8]{2}[01-12]{2}[01-31]{2}$' #acepta solo fechas validas                                                                                                                                       
+
+identificacionRegx='^[0-9]{10}$'
+paisRegx='^EC|COL|USE$'
+fechaNacimientoRegx='^19|20[0-9]{2}[1-12][1-31]{2}$'
+
+echo "Expresiones Regulares"
+read -p "Ingresar una identificacion: " identificacion
+echo-e"\n"
+read -p "Ingresar las iniciales del pais [EC, COL, USA]: " pais
+echo-e"\n"
+read -p "Ingresar la fecha del nacimiento [yyyy/mm/dd]: " fechaNacimiento
+echo "identificacion: $identificacion, pais: $pais, fecha de Nacimiento: $fechaNacimiento"
+
+if[[$identificacion =~ $identificacionRegx]]
+  then
+  echo "identificacion: $identificacion valida"
+  else
+  echo "identificacion: $identificacion Invalida"
+fi
+
+if[[$pais =~ $paisRegx]]
+  then
+  echo "pais: $pais valido"
+  else
+  echo "pais: $pais Invalido"
+fi
+
+if[[$fechaNacimiento =~ fechaNacimientoRegx]]
+  then
+  echo "fecha de nacimiento: $fechaNacimiento valido
+  else
+  echo "fecha de nacimiento: $fechaNacimiento Invalido"
+fi
+
+
+*** if anidados
+
+if [ condition ]; then
+  if [ condition ]; then  
+    statement 1
+  else 
+    statement 2
+  fi
+else 
+  statement 3
+fi
+
+
+-ge   >= 
+Expresiones condicionales
+
+    ge : mayor o igual
+    gt: mayor
+    le : menor o igual
+    lt: menor
+    ne: diferente
+
+
+
+
+*** Expresiones condicionales
+
+*** case
+
+  
+*** FOR // loop
+
+for var in item1 item 2 ..... N
+do
+  statement ....
+
+done
+
+*** while
+
+while [condition]
+do
+  statement 1 .....
+done
+
+// while infinito
+while :
+do 
+
+
+ 
+
+***
+  break // salir del bucle for
+  continue // para continuar con la iteracion
+
+*** login
+
+*** Envio opiones/parametro
+ 
+
+*** conectarse a INternet y descargar un archivo
+
+wget 
+
+
+
+*** Archivos y directorios
+
+mkdir
+touch
+ 
+
+
+*** Escribir dentro de los archivos
+
+
+
+
+
+
+*** fucniones y argumentos
+ 
+
+*** Empaquetamiento
+tar -vcf // c crear, v ver, f file  
+
+zip -e nombreDelArchivo archivosAComprimir
+
+
+*** transferir por la red 
+ 
+
+
+
+| // para contatenar comandos 
+
+read -n // mnadtener el cursoe ne la mismamlinea
+read  1 -s caracter de manera silenciosa 
+read -r esperar una tecla
+read -p 
+
+
+
+
+
+
+Bienvenidos a la materia de auxiliatura de laboratorio de telemática (LAB - 273)
+
+
+
+Las clases son los viernes de 12:00 pm a 14:00 pm 
+Se publicaran las guías por este medio en formato PDF.
+La ayudantía consta de 10 puntos. Los cuales son divididos por 4 módulo.
+Cada módulo es sobre 2.5 puntos.
+
+
+Los 2.5 puntos serán divididos en prácticas, asistencia y participación como se quedó en clases.
+
+
+Las notas son enviadas finalizando cada módulo.
+
+
+Link del grupo de whatsapp https://chat.whatsapp.com/EPMNT7Xqaxo2tWqZspwy9Q
+
+
+
+
+PRÁCTICA GENERAL N°1
+LABORATORIO DE TELEMÁTICA
+AUXILIATURA LAB – 273
+
+Univ. Dan Israel Copa Lupe
+Miércoles 12:00-14:00 Lab. Telemática (P3-L1)
+Univ.
+Viernes 12:00-14:00
+
+INSTRUCCIONES
+    • La practica debe ser entrega hasta ??? a las 23:00. 
+    • Deben enviar la practica en formato pdf de la siguiente manera Nombre_Apellido_Practica1.pdf.
+    • Enviar la practica a los correos dcopalupe@gmail.com o ?????.
+    • En su practica deben especificar nombre completo, carnet, docente, paralelo.
+
+
+1.- Inicie wireshrak y ejecute el comando: “ping cv.fcpn.umsa.bo”
+Responda a lo siguiente:
+    a) ¿Cuál es la dirección MAC de nuestro host?
+    b) ¿Cuál es la dirección MAC del host al que hemos hecho ping?
+    c) ¿Cuál es el tiempo de vida (TTL) de los paquetes enviados y recibidos?
+    d) ¿Qué longitud tiene la cabecera IP del datagrama que hemos enviado?
+2.- Detallar los comandos y archivos que se deben modificar para cambiar de una conexión estática a dinámica y viceversa en la plataforma GNU/LINUX
+3.- Abrir la página informatica.edu.bo mientras se capturan los paquetes en wireshark, realizar lo siguiente: 
+    a) Filtrar los paquetes http, dns.
+    b) Filtrar paquetes que usan puertos 80, 25 y 443
+
+
+
+apazaalberth7@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
